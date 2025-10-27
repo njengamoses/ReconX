@@ -1,3 +1,6 @@
-python-nmap
-jinja2
-requests
+nmap
+argparse
+json
+os
+sys
+datetime
