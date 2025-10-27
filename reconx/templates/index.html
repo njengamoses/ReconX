@@ -1,21 +1,15 @@
 <!doctype html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>ReconX — Download Report</title>
-    <style>
-      body{font-family:Arial,Helvetica,sans-serif;background:#0f1720;color:#e6edf3;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
-      .card{background:#0b1220;padding:28px;border-radius:8px;box-shadow:0 10px 30px rgba(0,0,0,0.5);text-align:center}
-      a.btn{display:inline-block;padding:10px 16px;background:#00a86b;color:#071018;border-radius:6px;text-decoration:none;font-weight:700}
-      p.small{color:#9fb7a9;margin-top:12px;font-size:13px}
-    </style>
-  </head>
-  <body>
-    <div class="card">
-      <h2>ReconX Report</h2>
-      <p>Click to download the latest available report.</p>
-      <a class="btn" href="/download">⬇ Download Latest Report</a>
-      <p class="small">Ensure the report file exists in <code>examples/</code>.</p>
+  <head><meta charset="utf-8"><title>ReconX — Generate & Download</title></head>
+  <body style="font-family:Arial;display:flex;align-items:center;justify-content:center;height:100vh;background:#0f1720;color:#fff">
+    <div style="text-align:center;background:#071018;padding:28px;border-radius:8px">
+      <h2>ReconX — Generate & Download Report</h2>
+      <p>Enter target and click generate (quick scan: ports 1-1024)</p>
+      <form action="/generate-and-download/" method="get" onsubmit="event.preventDefault(); location.href='/generate-and-download/'+encodeURIComponent(document.getElementById('t').value);">
+        <input id="t" placeholder="example.com or 127.0.0.1" style="padding:8px;width:220px" />
+        <button type="submit" style="padding:8px 12px;margin-left:8px">Generate & Download</button>
+      </form>
+      <p style="color:#9fb7a9;font-size:13px;margin-top:12px">Use only on authorized targets.</p>
     </div>
   </body>
 </html>
