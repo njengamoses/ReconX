@@ -1,30 +1,35 @@
 #!/usr/bin/env python3
-"""
-Top-level wrapper so you can run:
-  python reconx.py scan 127.0.0.1 --ports 1-1000 --output examples/report.html
-"""
-
-import argparse
-from reconx.scanner import scan_target
-from reconx.reporter import render_report
-
-def cmd_scan(args):
-    data = scan_target(target=args.target, ports=args.ports, arguments="-sV")
-    out = render_report(data, out_path=args.output)
-    print(f"[+] Report generated: {out}")
+# reconx.py - top level wrapper for ReconX
+import sys, json
+from reconx import scanner, report
 
 def main():
-    parser = argparse.ArgumentParser(prog="reconx", description="ReconX top-level tool")
-    sub = parser.add_subparsers(dest="command", required=True)
+    if len(sys.argv) < 2:
+        print("Usage: python reconx.py [scan|report] <arg>")
+        return
 
-    p_scan = sub.add_parser("scan", help="Run a recon scan")
-    p_scan.add_argument("target", help="Target IP or host")
-    p_scan.add_argument("--ports", default="1-1024", help="Port range, e.g. 1-1000")
-    p_scan.add_argument("--output", default="report.html", help="Output HTML path")
-    p_scan.set_defaults(func=cmd_scan)
+    cmd = sys.argv[1]
 
-    args = parser.parse_args()
-    args.func(args)
+    if cmd == "scan":
+        if len(sys.argv) < 3:
+            print("Usage: python reconx.py scan <target>")
+            return
+        target = sys.argv[2]
+        out = f"examples/{target}_scan.json"
+        data = scanner.scan_target(target)
+        with open(out, "w") as f:
+            json.dump(data, f, indent=2)
+        print(f"[+] Scan complete. Saved to {out}")
+
+    elif cmd == "report":
+        if len(sys.argv) < 3:
+            print("Usage: python reconx.py report <json_file>")
+            return
+        json_file = sys.argv[2]
+        report.generate_html_report(json_file)
+
+    else:
+        print("Unknown command. Use 'scan' or 'report'.")
 
 if __name__ == "__main__":
     main()
