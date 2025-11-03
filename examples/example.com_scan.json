@@ -1,24 +1,7 @@
 {
-  "23.220.75.232": {
-    "address": "23.220.75.232",
+  "23.192.228.80": {
+    "address": "23.192.228.80",
     "state": "up",
-    "protocols": {
-      "tcp": [
-        {
-          "port": 80,
-          "state": "open",
-          "name": "http",
-          "product": "AkamaiGHost",
-          "version": ""
-        },
-        {
-          "port": 443,
-          "state": "open",
-          "name": "http",
-          "product": "AkamaiGHost",
-          "version": ""
-        }
-      ]
-    }
+    "protocols": {}
   }
 }

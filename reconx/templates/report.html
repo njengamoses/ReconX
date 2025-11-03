@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReconX Scan Report</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+  <div class="max-w-5xl mx-auto my-10 p-8 bg-white rounded-2xl shadow-md">
+    <h1 class="text-3xl font-bold text-blue-700 mb-6">ReconX Scan Report</h1>
+
+    <div class="mb-6">
+      <p><strong>Target:</strong> {{ target }}</p>
+      <p><strong>Date:</strong> {{ date }}</p>
+    </div>
+
+    <h2 class="text-2xl font-semibold mb-4 text-gray-800">Open Ports</h2>
+    <table class="w-full border-collapse mb-8">
+      <thead>
+        <tr class="bg-blue-100">
+          <th class="border p-2 text-left">Port</th>
+          <th class="border p-2 text-left">Service</th>
+          <th class="border p-2 text-left">Status</th>
+          <th class="border p-2 text-left">Banner</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for result in results %}
+        <tr class="hover:bg-gray-50">
+          <td class="border p-2">{{ result.port }}</td>
+          <td class="border p-2">{{ result.service }}</td>
+          <td class="border p-2">{{ result.status }}</td>
+          <td class="border p-2 text-sm text-gray-600">{{ result.banner }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h2 class="text-2xl font-semibold mb-4 text-gray-800">Visualization</h2>
+    <canvas id="chart" height="120"></canvas>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('chart');
+    const data = {
+      labels: [{% for result in results %}'{{ result.port }}',{% endfor %}],
+      datasets: [{
+        label: 'Open Ports',
+        data: [{% for result in results %}{{ loop.index }},{% endfor %}],
+        backgroundColor: 'rgba(37,99,235,0.5)',
+        borderColor: 'rgba(37,99,235,1)',
+        borderWidth: 1
+      }]
+    };
+    new Chart(ctx, { type: 'bar', data });
+  </script>
+</body>
+</html>

@@ -1,9 +1,55 @@
 <!doctype html>
-<html><head><meta charset="utf-8"><title>ReconX Report</title>
-<style>body{background:#0b0b0b;color:#cfeccf;font-family:Arial}h1{color:#00ff00}.container{max-width:900px;margin:20px auto;padding:20px;background:#0f0f0f;border-radius:6px}</style>
-</head><body><div class="container"><h1>ReconX Report</h1>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ReconX Report — </title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    :root{--bg:#0d1117;--panel:#0b1220;--muted:#8b949e;--accent:#58a6ff;--mono:#9ae6b4}
+    body{background:var(--bg);color:#c9d1d9;font-family:Inter,Segoe UI,Arial,Helvetica,sans-serif;margin:0;padding:28px}
+    .wrap{max-width:1100px;margin:0 auto}
+    header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    h1{margin:0;font-size:20px;color:var(--accent)}
+    .meta{font-size:13px;color:var(--muted)}
+    .panel{background:var(--panel);padding:18px;border-radius:10px;margin-top:18px;box-shadow:0 8px 24px rgba(0,0,0,0.6)}
+    .summary{display:flex;gap:12px;flex-wrap:wrap}
+    .stat{background:rgba(255,255,255,0.02);padding:10px 14px;border-radius:8px}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{padding:10px;border-bottom:1px solid rgba(255,255,255,0.03);text-align:left;font-size:13px}
+    th{color:var(--muted);font-weight:600}
+    td.port{font-family:ui-monospace,monospace}
+    .download{display:inline-block;padding:8px 12px;background:var(--accent);color:#071218;border-radius:8px;text-decoration:none;font-weight:600}
+    footer{margin-top:20px;color:var(--muted);font-size:12px;text-align:center}
+    @media (max-width:700px){th,td{padding:8px;font-size:12px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>ReconX Report</h1>
+        <div class="meta">Generated:  — ReconX</div>
+      </div>
+      <div>
+        <a class="download" href="">Download JSON</a>
+      </div>
+    </header>
 
-  <h2>127.0.0.1 — up</h2>
-  
+    <div class="panel">
+      <div class="summary">
+        <div class="stat"><strong></strong><div class="meta">hosts</div></div>
+        <div class="stat"><strong></strong><div class="meta">open ports (total)</div></div>
+      </div>
 
-</div></body></html>
+      
+      <section style="margin-top:18px">
+        <h3 style="margin:6px 0 8px 0">127.0.0.1 <span class="meta">(up)</span></h3>
+        
+      </section>
+      
+    </div>
+
+    <footer>ReconX — for authorized testing only. Do not scan systems without permission.</footer>
+  </div>
+</body>
+</html>

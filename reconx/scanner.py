@@ -4,6 +4,9 @@ Scanner with banner grabbing integrated.
 """
 import logging
 import nmap
+import sys, os
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
 from reconx.modules.banner_grabber import grab_banner
 
 logger = logging.getLogger("reconx.scanner")

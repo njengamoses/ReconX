@@ -1,3 +1,5 @@
+[INFO] Starting nmap scan: target=127.0.0.1 ports=1-1024 args=-sV --host-timeout 30s
+[INFO] Scan complete: found 1 hosts
 {
   "127.0.0.1": {
     "address": "127.0.0.1",
